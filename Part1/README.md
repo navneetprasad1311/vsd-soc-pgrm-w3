@@ -6,7 +6,7 @@ While this topic was covered concisely in *Week 2* [Post-synthesis Simulation of
 
 ---
 
-# Table of Contents
+## Table of Contents
 
 1. [Key Aspects of Gate-Level Simulation (GLS)](#key-aspects-of-gate-level-simulation-gls)
 2. [Synthesis of VSDBabySoC](#synthesis-of-vsdbabysoc)
