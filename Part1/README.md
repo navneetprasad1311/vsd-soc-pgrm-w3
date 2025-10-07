@@ -282,7 +282,7 @@ iverilog -o ~/Documents/Verilog/Labs/vsdbabysoc_synth.vvp -DPOST_SYNTH_SIM -DFUN
 
 > [!Note]
 > `-DPOST_SYNTH_SIM` | Defines the macro `POST_SYNTH_SIM` to enable post-synthesis simulation mode. \
-> `-DFUNCTIONAL`     | Defines the macro `FUNCTIONAL` to select functional simulation mode. \     
+> `-DFUNCTIONAL`     | Defines the macro `FUNCTIONAL` to select functional simulation mode. \
 > `-DUNIT_DELAY=#1`  | Defines the macro `UNIT_DELAY` with value `#1` for unit delay parameterization in simulation \
 > `~/Documents/Verilog/Labs/VSDBabySoC/src/include` | Contains header files, parameter definitions, and macros shared across design modules.  \
 > `~/Documents/Verilog/Labs/VSDBabySoC/src/module` | Includes the Verilog source files for each functional block of the VSDBabySoC. \
