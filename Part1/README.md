@@ -44,7 +44,7 @@ Now inside the `../VSDBabySoC` folder, run `yosys` to perform synthesis.
 yosys
 ```
 
-![yosys](image.png)
+![yosys](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part1/Images/yosys.png)
 
 ---
 
@@ -56,7 +56,7 @@ read_verilog -I ~/Documents/Verilog/Labs/VSDBabySoC/src/include/ ~/Documents/Ver
 read_verilog -I ~/Documents/Verilog/Labs/VSDBabySoC/src/include/ ~/Documents/Verilog/Labs/VSDBabySoC/src/module/clk_gate.v
 ```
 
-![readvyosys](image.png)
+![readvyosys](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part1/Images/readvyosys.png)
 
 ---
 
@@ -68,7 +68,7 @@ read_liberty -lib ~/Documents/Verilog/Labs/VSDBabySoC/src/lib/avsddac.lib
 read_liberty -lib ~/Documents/Verilog/Labs/VSDBabySoC/src/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
 
-![readlibyosys](image.png)
+![readlibyosys](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part1/Images/readlibyosys.png)
 
 ---
 
@@ -81,7 +81,7 @@ synth -top vsdbabysoc
 
 Synthesis must result in the stats being printed with all the cells and submodules listed as shown below.
 
-![synthyosys](image.png)
+![synthyosys](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part1/Images/synthyosys.png)
 
 ---
 
@@ -91,7 +91,7 @@ Convert D Flip-Flops into equivalent Standard Cell instances by,
 dfflibmap -liberty ~/Documents/Verilog/Labs/VSDBabySoC/src/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 ```
 
-![dffyosys](image.png)
+![dffyosys](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part1/Images/dffyosys.png)
 
 ---
 
@@ -118,7 +118,7 @@ abc -liberty ~/Documents/Verilog/Labs/VSDBabySoC/src/lib/sky130_fd_sc_hd__tt_025
 
 ABC in Yosys performs logic optimization and technology mapping, reducing gate count and preparing the design for efficient synthesis and gate-level simulation as shown below.
 
-![abcyosys](image-1.png)
+![abcyosys](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part1/Images/abcyosys.png)
 
 ---
 
@@ -139,7 +139,7 @@ rename -enumerate
 
 The outcome of the optimization should resemble the demonstration below.
 
-![optimyosys](image.png)
+![optimyosys](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part1/Images/optimyosys.png)
 
 ---
 
@@ -149,7 +149,7 @@ To view the statistics of the synthesized design, run:
 stat
 ```
 
-![statyosy](image.png)
+![statyosy](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part1/Images/statyosys.png)
 
 Complete statistics given below: 
 
@@ -234,7 +234,7 @@ write_verilog -noattr ~/Documents/Verilog/Labs/vsdbabysoc_synth.v
 
 The netlist should now be successfully saved in the specified folder as shown below.
 
-![netyosys](image-1.png)
+![netyosys](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part1/Images/netyosys.png)
 
 **With the synthesis process complete, the design is now optimized, mapped to the target technology, and ready for subsequent steps such as gate-level simulation.**
 
