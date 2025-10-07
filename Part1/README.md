@@ -6,6 +6,15 @@ While this topic was covered concisely in *Week 2* [Post-synthesis Simulation of
 
 ---
 
+# Table of Contents
+
+1. [Key Aspects of Gate-Level Simulation (GLS)](#key-aspects-of-gate-level-simulation-gls)
+2. [Synthesis of VSDBabySoC](#synthesis-of-vsdbabysoc)
+3. [Functional Verification: Pre-Synthesis vs. Post-Synthesis Simulation](#functional-verification-pre-synthesis-vs-post-synthesis-simulation)
+4. [Summary](#summary)
+
+---
+
 ## Key Aspects of Gate-Level Simulation (GLS)
 
 1. **Functional Verification** – Confirms synthesized netlist matches RTL behavior.  
@@ -18,7 +27,6 @@ While this topic was covered concisely in *Week 2* [Post-synthesis Simulation of
 8. **Final Sanity Check** – Ensures design is ready for place-and-route.
 
 ---
-
 
 ## Synthesis of VSDBabySoC 
 
@@ -237,5 +245,112 @@ The netlist should now be successfully saved in the specified folder as shown be
 ![netyosys](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part1/Images/netyosys.png)
 
 **With the synthesis process complete, the design is now optimized, mapped to the target technology, and ready for subsequent steps such as gate-level simulation.**
+
+---
+
+## Gate-Level Simulation of VSDBabySoC
+
+After completing synthesis, the next step is Gate-Level Simulation (GLS), which verifies the functional correctness of the synthesized netlist. Unlike RTL simulation, which uses behavioral Verilog, GLS operates on the gate-level representation generated after synthesis, ensuring that the logical behavior remains consistent with the original design.
+
+To perform GLS, the synthesized netlist (`vsdbabysoc_synth.v`) is simulated using the same testbench that was used for RTL simulation. This helps confirm that synthesis has not introduced any unintended changes.
+
+Firstly, \
+Ensure the following files are in the working directory (`Labs` in my case) before compilation.
+
+```
+vsdbabysoc_synth.v
+avsddac.v
+avsdpll.v
+primitives.v
+sky130_fd_sc_hd.v
+```
+this is done using,
+
+```bash
+cd ~/Documents/Verilog/Labs
+cp -r ~/Documents/Verilog/Labs/VSDBabySoC/src/module/avsddac.v .
+cp -r ~/Documents/Verilog/Labs/VSDBabySoC/src/module/avsdpll.v .
+cp -r ~/Documents/Verilog/Labs/VSDBabySoC/src/gls_model/sky130_fd_sc_hd.v .
+cp -r ~/Documents/Verilog/Labs/VSDBabySoC/src/gls_model/primitives.v .
+```
+
+Naturally, the synthesized netlist must be compiled together with the testbench using **iverilog**, as shown in the following command,
+
+```bash
+iverilog -o ~/Documents/Verilog/Labs/vsdbabysoc_synth.vvp -DPOST_SYNTH_SIM -DFUNCTIONAL -DUNIT_DELAY=#1 -I ~/Documents/Verilog/Labs/VSDBabySoC/src/include -I ~/Documents/Verilog/Labs/VSDBabySoC/src/module -I  ~/Documents/Verilog/Labs/VSDBabySoC/src/gls_model ~/Documents/Verilog/Labs/VSDBabySoC/src/module/testbench.v
+```
+
+> [!Note]
+> `-DPOST_SYNTH_SIM` | Defines the macro `POST_SYNTH_SIM` to enable post-synthesis simulation mode. \
+> `-DFUNCTIONAL`     | Defines the macro `FUNCTIONAL` to select functional simulation mode. \       \      
+> `-DUNIT_DELAY=#1`  | Defines the macro `UNIT_DELAY` with value `#1` for unit delay parameterization in simulation \
+> `~/Documents/Verilog/Labs/VSDBabySoC/src/include` | Contains header files, parameter definitions, and macros shared across design modules.  \
+> `~/Documents/Verilog/Labs/VSDBabySoC/src/module` | Includes the Verilog source files for each functional block of the VSDBabySoC. \
+> `~/Documents/Verilog/Labs/VSDBabySoC/src/gls_model` | Holds the synthesized gate-level models and standard cell library files required for gate-level simulation.
+
+
+Then, to view the waveform,
+
+```bash
+vvp vsdbabysoc_synth.vvp
+gtkwave post_synth_sim.vcd 
+```
+
+![postsynthsim](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part1/Images/postsynthsim.png)
+
+---
+
+### Waveform of GLS
+
+![postsynthwave](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part1/Images/postsynthwave.png)
+
+---
+
+**With this, the Gate-Level Simulation of VSDBabySoC is successfully completed.**
+
+---
+
+## Functional Verification: Pre-Synthesis vs. Post-Synthesis Simulation
+
+**Objectives of the Comparison**
+
+- Verify Functional Consistency
+    Ensure that the synthesized design produces the same outputs as the RTL design for the same set of input stimuli.
+
+- Check Timing Behavior
+    Observe any differences in signal propagation or minor delays introduced by the gate-level implementation.
+
+- Validate Module Interconnections
+    Confirm that the connections between CPU, memory, and peripheral modules function correctly after synthesis.
+
+---
+
+![Pre-Synth Wave](https://github.com/navneetprasad1311/vsd-soc-pgrm-w2/blob/main/Part2/Images/waveform.png)
+*Pre-synthesis simulation waveform of VSDBabySoC as captured in Week 2*
+
+---
+
+![Post-Synth Wave](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part1/Images/postsynthwave.png)
+*Post-synthesis simulation waveform of VSDBabySoC*
+
+---
+
+- All functional outputs of the synthesized netlist matched the RTL simulation, confirming that synthesis preserved the intended behavior.
+
+- The comparison validates that the VSDBabySoC design is functionally correct and ready for further implementation steps such as *STA* (Static Timing Analysis).
+
+---
+
+## Summary
+
+The Gate-Level Simulation (GLS) of **VSDBabySoC** confirms that the synthesized netlist faithfully replicates the behavior of the original RTL design. The synthesis process—including mapping to standard cells, optimization, and technology-specific adjustments—was completed successfully, producing a flattened, clean, and fully enumerated netlist.
+
+Post-synthesis simulation verified:  
+
+- **Functional correctness**: All module outputs matched the RTL simulation.  
+- **Timing consistency**: Minor gate-level propagation delays were within acceptable limits.  
+- **Module interconnections**: CPU, memory, and peripheral modules functioned correctly.
+
+The comparison of **pre-synthesis and post-synthesis waveforms** demonstrates that the design remains stable and predictable after synthesis. With GLS completed, **VSDBabySoC is verified, optimized, and ready for subsequent stages**, such as **Static Timing Analysis (STA)** and place-and-route for physical implementation.
 
 ---
