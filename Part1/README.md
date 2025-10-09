@@ -240,6 +240,10 @@ write_verilog -noattr ~/Documents/Verilog/Labs/vsdbabysoc_synth.v
 > Synthesised Netlist file is saved as `vsdbabysoc_synth.v` and not `vsdbabysoc.synth.v` as specified in `testbench.v` to have consistent and clear naming that aligns with common Verilog file conventions, where underscores are preferred over dots for readability and compatibility with build tools. \
 > The `testbench.v` is then edited in accordance with this change to ensure that the correct synthesized netlist file, `vsdbabysoc_synth.v`, is referenced during simulation and verification.
 
+![testbench](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part1/Images/testbench.png)
+
+---
+
 The netlist should now be successfully saved in the specified folder as shown below.
 
 ![netyosys](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part1/Images/netyosys.png)
