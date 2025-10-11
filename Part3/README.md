@@ -44,7 +44,7 @@ docker run -i -v /home/navneet:/home/navneet opensta
 
 > [!Note]
 > - `-v /home/navneet:/home/navneet` ensures the container sees the same directory structure as your host.
-> - Inside the container, you can run your TCL script with the same absolute paths: sta /home/navneet/vsdbabysoc_min_max_delays.tcl
+> - Inside the container, you can run your TCL script with the same absolute paths
 > - No changes to the TCL script or netlist paths are needed.
 
 ![dockerinit](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part3/Images/dockerinit.png)
