@@ -47,7 +47,7 @@ docker run -i -v /home/navneet:/home/navneet opensta
 > - Inside the container, you can run your TCL script with the same absolute paths: sta /home/navneet/vsdbabysoc_min_max_delays.tcl
 > - No changes to the TCL script or netlist paths are needed.
 
-![dockerinit]()
+![dockerinit](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part3/Images/dockerinit.png)
 
 ---
 
@@ -86,13 +86,13 @@ report_checks
 
 This approach is handy for quick experimentation or debugging without the need to create a full TCL script.
 
-![examplesta]()
+![examplesta](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part3/Images/examplesta.png)
 
 By default, `report-checks` reports only max path delays, that is the Setup time delays. \
 To see min path delays (Hold Time delays) use `report-checks -min` \
 To see both use `report-checks -min_max`.
 
-![examplestamin]()
+![examplestamin](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part3/Images/examplestamin.png)
 
 <details>
     <summary>Reports (Min/Max)</summary>
@@ -169,7 +169,7 @@ set_input_delay -clock clk 0 {in1 in2}
 report_checks
 ```
 
-![spefreportsta]()
+![spefreportsta](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part3/Images/spefreportsta.png)
 
 <details>
     <summary>Reports (Max)</summary>
@@ -235,7 +235,7 @@ You can automate the timing flow by placing these commands in a `.tcl` script an
     report_checks -path_delay min_max
 </details>
 
-![exampletcl](image.png)
+![exampletcl](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part3/Images/exampletcl.png)
 
 ---
 
@@ -250,7 +250,7 @@ docker run -i -v /home/navneet:/home/navneet opensta /home/navneet/min_max_delay
 
 ---
 
-![workflow1](image-1.png)
+![workflow1](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part3/Images/workflow1.png)
 
 ---
 
@@ -326,8 +326,8 @@ docker run -i -v /home/navneet:/home/navneet opensta /home/navneet/min_max_delay
    - Slack: +9.43 (MET)  
    - Path is well within timing; no setup issues.
 
-![timinggraph](image.png)
-*Bare bones timing graph made using the data from `report_checks` using python, to know more [click here]()*
+![timinggraph](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part3/Images/timinggraph.png)
+*Bare bones timing graph made using the data from `report_checks` using python, to know more [click here](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part3/TiminggraphsREADME.md)*
 
 ---
 
@@ -371,13 +371,13 @@ Few errors were observed while running this `.tcl` file they are,
 | `default_fanout_load is 0.0`          | Benign warning                                   | Can be safely ignored                 |
 
 
-![workflow2](image.png)
+![workflow2](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part3/Images/workflow2.png)
 
 ---
 
 **Full Report**
 
-![babysocreportsta](image-1.png)
+![babysocreportsta](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part3/Images/babysocreportsta.png)
 
 <details>
     <summary>Reports (Min/Max)</summary>
@@ -452,8 +452,8 @@ Few errors were observed while running this `.tcl` file they are,
 
 Both hold and setup paths are timing-safe. Hold path is fast but no violation occurs, and setup path has sufficient margin for reliable operation.
 
-![timinggraphsoc](image.png)
-*Timing graph generated from `reports_check`, to know more [click here]()*
+![timinggraphsoc](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part3/Images/timinggraphsoc.png)
+*Timing graph generated from `reports_check`, to know more [click here](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part3/TiminggraphsREADME.md)*
 
 ---
 
@@ -534,9 +534,9 @@ This script below can be used to perform Static Timing Analysis (STA) across all
 
 Make sure the output directory `/home/navneet/OpenSTA/out/` exists before running Static Timing Analysis.
 
-![workflow3](image-1.png)
+![workflow3](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part3/Images/workflow3.png)
 
-![files](image-2.png)
+![files](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part3/Images/files.png)
 
 The following timing summary table was collected by running STA across 13 PVT corners using OpenSTA.
 
@@ -563,28 +563,28 @@ Metrics such as Worst Hold Slack, Worst Setup Slack, WNS, and TNS were extracted
 
 **Worst Min Slack**
 
-![worstminslack](image.png)
+![worstminslack](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part3/Images/worstminslack.png)
 *Worst Min Slack – The smallest positive slack observed across all timing paths.*
 
 ---
 
 **Worst Max Slack**
 
-![worstmaxslack](image-1.png)
+![worstmaxslack](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part3/Images/worstmaxslack.png)
 *Worst Max Slack – The largest positive slack observed across all timing paths.*
 
 ---
 
 **Worst Negative Slack**
 
-![worstnegativeslack](image.png)
+![worstnegativeslack](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part3/Images/worstnegativeslack.png)
 *Worst Negative Slack – The most critical timing violation (largest negative slack) in the design.*
 
 ---
 
 **Total Negative Slack**
 
-![totalnegativeslack](image.png)
+![totalnegativeslack](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part3/Images/totalnegativeslack.png)
 *Total Negative Slack – The sum of all negative slacks across all paths, indicating overall timing violations.*
 
 ---
