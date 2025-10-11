@@ -455,6 +455,39 @@ Both hold and setup paths are timing-safe. Hold path is fast but no violation oc
 
 ---
 
+### Advanced Analysis through OpenSTA
+
+```bash
+report_checks -digits 4 -fields [list capacitance slew input_pins fanout]
+```
+
+![advtim](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part3/Images/advtim.png)
+
+Provides a detailed report showing:  
+
+- **Capacitance**: Load present at each node  
+- **Slew**: Rate of signal transitions  
+- **Input Pins**: Pins connected at each stage  
+- **Fanout**: Number of outputs driven by each node  
+
+Helpful for pinpointing slow transitions or overloaded signals that may lead to critical path timing issues.
+
+
+```bash
+report_power
+```
+
+![powerrpt](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part3/Images/powerrpt.png)
+
+Displays the overall power consumption of the design, including a detailed breakdown:  
+
+- **Dynamic Power**: From signal switching activity  
+- **Static (Leakage) Power**: From transistors that remain always on  
+
+Useful for assessing the power-performance trade-offs after achieving timing closure.
+
+---
+
 ## PVT Corner Analysis of `VSDBabySoC`
 
 **PVT Corner Analysis** is a critical step in verifying the timing of digital designs. PVT stands for **Process, Voltage, and Temperature**, and a “corner” represents a specific combination of these factors that can affect circuit performance. This analysis ensures that the design operates correctly under all possible manufacturing and environmental variations.
