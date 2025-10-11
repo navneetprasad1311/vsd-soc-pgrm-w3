@@ -378,6 +378,7 @@ Few errors were observed while running this `.tcl` file they are,
 
 <details>
     <summary>Reports (Min/Max)</summary>
+    
     Startpoint: _9501_ (rising edge-triggered flip-flop clocked by clk)
     Endpoint: _10343_ (rising edge-triggered flip-flop clocked by clk)
     Path Group: clk
