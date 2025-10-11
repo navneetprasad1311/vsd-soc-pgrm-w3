@@ -327,13 +327,12 @@ docker run -i -v /home/navneet:/home/navneet opensta /home/navneet/min_max_delay
    - Path is well within timing; no setup issues.
 
 ![timinggraph](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part3/Images/timinggraph.png)
+
 *Bare bones timing graph made using the data from `report_checks` using python, to know more [click here](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part3/TiminggraphsREADME.md)*
 
 ---
 
 ## Timing Analysis of `VSDBabySoC`
-
-I created a folder named `STA` to keep the reports organized and easily accessible inside the `~/Documents/Verilog/Labs` directory.
 
 The below given `.tcl` file is used automate this process.
 
@@ -376,8 +375,6 @@ Few errors were observed while running this `.tcl` file they are,
 ---
 
 **Full Report**
-
-![babysocreportsta](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part3/Images/babysocreportsta.png)
 
 <details>
     <summary>Reports (Min/Max)</summary>
@@ -453,6 +450,7 @@ Few errors were observed while running this `.tcl` file they are,
 Both hold and setup paths are timing-safe. Hold path is fast but no violation occurs, and setup path has sufficient margin for reliable operation.
 
 ![timinggraphsoc](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part3/Images/timinggraphsoc.png)
+
 *Timing graph generated from `reports_check`, to know more [click here](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part3/TiminggraphsREADME.md)*
 
 ---
