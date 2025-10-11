@@ -1,5 +1,15 @@
 # Labs on Static Timing Analysis
 
+## Table of Contents
+
+1. [Installation of OpenSTA](#installation-of-opensta)
+2. [Running OpenSTA](#running-opensta)
+3. [Timing Analysis of example1.v](#timing-analysis-of-example1v)
+4. [Timing Analysis of VSDBabySoC](#timing-analysis-of-vsdbabysoc)
+5. [PVT Corner Analysis of VSDBabySoC](#pvt-corner-analysis-of-vsdbabysoc)
+6. [Summary: Static Timing Analysis (STA)](#summary-static-timing-analysis-sta)
+
+---
 
 ## Installation of OpenSTA
 
@@ -549,3 +559,45 @@ Metrics such as Worst Hold Slack, Worst Setup Slack, WNS, and TNS were extracted
 | sky130_fd_sc_hd__ss_n40C_1v44.lib | -13600.6846 | -19.9610 | -19.9610        | 0.9909          |
 | sky130_fd_sc_hd__ss_n40C_1v76.lib | -1905.4320  | -3.9606  | -3.9606         | 0.5038          |
 
+---
+
+**Worst Min Slack**
+
+![worstminslack](image.png)
+*Worst Min Slack – The smallest positive slack observed across all timing paths.*
+
+---
+
+**Worst Max Slack**
+
+![worstmaxslack](image-1.png)
+*Worst Max Slack – The largest positive slack observed across all timing paths.*
+
+---
+
+**Worst Negative Slack**
+
+![worstnegativeslack](image.png)
+*Worst Negative Slack – The most critical timing violation (largest negative slack) in the design.*
+
+---
+
+**Total Negative Slack**
+
+![totalnegativeslack](image.png)
+*Total Negative Slack – The sum of all negative slacks across all paths, indicating overall timing violations.*
+
+---
+ 
+## Summary: Static Timing Analysis (STA)
+
+- OpenSTA is installed via Docker and GitHub for a consistent environment.
+- Load Liberty files, netlists, and SDC constraints; define clocks and input delays.
+- Use report_checks to get setup (max) and hold (min) path timings.
+- SPEF files include parasitic delays for accurate STA.
+- TCL scripts automate min/max timing reports for the design.
+- STA identifies critical paths: min path (hold) and max path (setup) with slack analysis.
+- Metrics: WNS (worst negative slack), TNS (total negative slack), worst slack max/min.
+- PVT corner analysis ensures timing correctness across process, voltage, and temperature variations.
+
+---
