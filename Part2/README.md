@@ -170,6 +170,8 @@ Slack = Required Time – Arrival Time
 
 Slack tells us how much “wiggle room” or margin a signal has before it causes a timing problem in the circuit.
 
+![slack](https://github.com/navneetprasad1311/vsd-soc-pgrm-w3/blob/main/Part2/Images/slack.png)
+
 ---
 
 ## Checks
